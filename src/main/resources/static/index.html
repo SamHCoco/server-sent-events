@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Server Sent Events</title>
+    </head>
+        <body>
+            <h1>SSE Messages</h1>
+            <div id="messages"></div>
+
+            <script>
+                const events = new EventSource("/events");
+
+                events.onmessage = (event) => {
+                    document.getElementById("messages").innerHTML +=
+                        `<p>${event.data}</p>`;
+                };
+            </script>
+        </body>
+</html>
