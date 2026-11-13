@@ -12,7 +12,8 @@ public class ServerSentEventConsumer {
 
     private final ServerSentEventController serverSentEventController;
 
-    @KafkaListener(topics = "server-sent-events")
+    @KafkaListener(topics = "server-sent-events",
+                   groupId = "server-sent-events-group")
     public void consume(ServerSentEventMessage message) {
         serverSentEventController.send(message);
     }
