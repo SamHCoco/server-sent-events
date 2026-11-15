@@ -9,6 +9,11 @@ spring:
     consumer:
       group-id: server-sent-events-group
       auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.value.default.type: com.samhcoco.sse.model.ServerSentEventMessage
+        spring.json.trusted.packages: com.samhcoco.sse.model
 
 server:
   port: 9000
